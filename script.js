@@ -9,5 +9,4 @@ form.addEventListener('submit', (e) => {
 
   const result = parse(equation.value)
   answer.textContent = result
-  // answer.textContent = new Intl.NumberFormat().format(result)
 })

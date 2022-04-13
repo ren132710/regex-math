@@ -122,17 +122,13 @@ describe('#parse', () => {
       expect(parse('-15')).toBe(-15)
     })
 
-    test *
-      ('should handle very large numbers with scientific notation',
-      () => {
-        expect(parse('10 ^ 30')).toBe(1e30)
-      })
+    test('should handle very large numbers with scientific notation', () => {
+      expect(parse('10 ^ 30')).toBe(1e30)
+    })
 
-    test *
-      ('should handle very small numbers with scientific notation',
-      () => {
-        expect(parse('10 ^ -30')).toBe(1e-30)
-      })
+    test('should handle very small numbers with scientific notation', () => {
+      expect(parse('10 ^ -30')).toBe(1e-30)
+    })
 
     test('should return NaN when entry is not valid', () => {
       expect(parse('abc')).toBeNaN()
