@@ -103,6 +103,12 @@ describe('#parse', () => {
     })
   })
 
+  describe('parentheses tests', () => {
+    test('should correctly compute an equation with nested parentheses', () => {
+      expect(parse('2 +  ((3*4)/(7+5))')).toBe(3)
+    })
+  })
+
   describe('edge cases', () => {
     test('should correctly compute multiple operations in sequence', () => {
       expect(parse('-2*3/2*5+2-3-     -1')).toBe(-15)
@@ -128,12 +134,10 @@ describe('#parse', () => {
         expect(parse('10 ^ -30')).toBe(1e-30)
       })
 
-    test *
-      ('should return NaN when entry is not valid',
-      () => {
-        expect(parse('abc')).toBeNaN()
-        expect(parse('1+2*sdfsdf')).toBeNaN()
-        expect(parse('3*2=6')).toBeNaN()
-      })
+    test('should return NaN when entry is not valid', () => {
+      expect(parse('abc')).toBeNaN()
+      expect(parse('1+2*sdfsdf')).toBeNaN()
+      expect(parse('3*2=6')).toBeNaN()
+    })
   })
 })
