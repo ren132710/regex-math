@@ -78,10 +78,6 @@ describe('#parse', () => {
       expect(parse('-3 -  -2')).toBe(-1)
     })
 
-    test('should correctly add a negative and a positive numbers', () => {
-      expect(parse('-3 + 2')).toBe(-1)
-    })
-
     test('should correctly subtract a negative and a positive number', () => {
       expect(parse('-3 -  2')).toBe(-5)
     })
