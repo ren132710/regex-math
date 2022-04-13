@@ -1,5 +1,5 @@
 {
-  "name": "regex-arithmetic",
+  "name": "regex-math",
   "version": "1.0.0",
   "description": "",
   "main": "parse.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ren132710/regex-arithmetic.git"
+    "url": "git+https://github.com/ren132710/regex-math.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ren132710/regex-arithmetic/issues"
+    "url": "https://github.com/ren132710/regex-math/issues"
   },
-  "homepage": "https://github.com/ren132710/regex-arithmetic#readme",
+  "homepage": "https://github.com/ren132710/regex-math#readme",
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
