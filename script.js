@@ -1,4 +1,4 @@
-import { parse } from './parse.js'
+import parse from './parse.js'
 
 const equation = document.querySelector('#equation')
 const answer = document.querySelector('#answer')
