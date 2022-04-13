@@ -87,15 +87,53 @@ describe('#parse', () => {
     })
   })
 
-  describe('misc tests', () => {
-    test('should correctly compute multiple * and / operations', () => {
-      expect(parse('2*3/2*5')).toBe(15)
+  describe('to-the-power-of tests', () => {
+    test('should correctly compute positive exponents', () => {
+      expect(parse('4 ^ 4')).toBe(256)
+      expect(parse('-4 ^ 3')).toBe(-64)
     })
+
+    test('should correctly compute negative exponents', () => {
+      expect(parse('4 ^ -4')).toBe(0.00390625)
+    })
+
+    test('should ignore fractional exponents', () => {
+      //returns 4.2+5 = 9.2
+      expect(parse('4 ^1.2+5')).toBe(9.2)
+    })
+  })
+
+  describe('edge cases', () => {
+    test('should correctly compute multiple operations in sequence', () => {
+      expect(parse('-2*3/2*5+2-3-     -1')).toBe(-15)
+    })
+
     test('should handle a single positive digit', () => {
       expect(parse('15')).toBe(15)
     })
+
     test('should handle a single negative digit', () => {
       expect(parse('-15')).toBe(-15)
     })
+
+    test *
+      ('should handle very large numbers with scientific notation',
+      () => {
+        expect(parse('10 ^ 30')).toBe(1e30)
+      })
+
+    test *
+      ('should handle very small numbers with scientific notation',
+      () => {
+        expect(parse('10 ^ -30')).toBe(1e-30)
+      })
+
+    test *
+      ('should return NaN when entry is not valid',
+      () => {
+        expect(parse('abc')).toBeNaN()
+        expect(parse('1+2*sdfsdf')).toBeNaN()
+        expect(parse('3*2=6')).toBeNaN()
+      })
   })
 })
