@@ -9,6 +9,7 @@ const PARENTHESES_REGEX = /\((?<equation>[^\(\)]*)\)/
 const EXPONENT_REGEX = /(?<operand1>-?\d*\.?\d+)\s*(?<operation>\^)\s*(?<operand2>-?\d+)/
 const MULTIPLY_DIVIDE_REGEX = /(?<operand1>-?\d*\.?\d+)\s*(?<operation>[\*\/])\s*(?<operand2>-?\d*\.?\d+)/
 const ADD_SUBTRACT_REGEX = /(?<operand1>-?\d*\.?\d+)\s*(?<operation>[-\+])\s*(?<operand2>-?\d*\.?\d+)/
+const FRACTIONAL_EXPONENT_REGEX = /\^\s*\d*\.+/
 
 export default function parse(equation) {
   if (equation.match(PARENTHESES_REGEX)) {
@@ -17,6 +18,8 @@ export default function parse(equation) {
     const newEquation = equation.replace(PARENTHESES_REGEX, result)
     return parse(newEquation)
   } else if (equation.match(EXPONENT_REGEX)) {
+    console.log(equation.match(FRACTIONAL_EXPONENT_REGEX))
+    if (equation.match(FRACTIONAL_EXPONENT_REGEX)) return NaN
     const result = doMath(equation.match(EXPONENT_REGEX).groups)
     const newEquation = equation.replace(EXPONENT_REGEX, result)
     return parse(newEquation)
@@ -52,3 +55,34 @@ function doMath({ operand1, operand2, operation }) {
       return num1 ** num2
   }
 }
+
+/*
+ * pad operators
+const str = '12+34/56*78-1'
+
+function replace(str) {
+  result = str.split('')
+  const newStr = result.map((elem) => {
+    if (elem === '*') {
+      elem = ' ' + elem + ' '
+      return elem
+    }
+    if (elem === '/') {
+      elem = ' ' + elem + ' '
+      return elem
+    }
+    if (elem === '+') {
+      elem = ' ' + elem + ' '
+      return elem
+    }
+    if (elem === '-') {
+      elem = ' ' + elem + ' '
+      return elem
+    }
+    return elem
+  })
+
+  return newStr.join('')
+}
+console.log(replace(str)) //12 + 34 / 56 * 78 - 1
+*/

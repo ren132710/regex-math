@@ -94,8 +94,8 @@ describe('#parse', () => {
     })
 
     test('should ignore fractional exponents', () => {
-      //returns 4.2+5 = 9.2
-      expect(parse('4 ^1.2+5')).toBe(9.2)
+      expect(parse('4 ^1.2+5')).toBeNaN()
+      expect(parse('4^1+.25')).toBe(4.25)
     })
   })
 
