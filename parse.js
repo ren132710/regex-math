@@ -18,7 +18,6 @@ export default function parse(equation) {
     const newEquation = equation.replace(PARENTHESES_REGEX, result)
     return parse(newEquation)
   } else if (equation.match(EXPONENT_REGEX)) {
-    console.log(equation.match(FRACTIONAL_EXPONENT_REGEX))
     if (equation.match(FRACTIONAL_EXPONENT_REGEX)) return NaN
     const result = doMath(equation.match(EXPONENT_REGEX).groups)
     const newEquation = equation.replace(EXPONENT_REGEX, result)
