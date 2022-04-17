@@ -54,34 +54,3 @@ function doMath({ operand1, operand2, operation }) {
       return num1 ** num2
   }
 }
-
-/*
- * pad operators
-const str = '12+34/56*78-1'
-
-function replace(str) {
-  result = str.split('')
-  const newStr = result.map((elem) => {
-    if (elem === '*') {
-      elem = ' ' + elem + ' '
-      return elem
-    }
-    if (elem === '/') {
-      elem = ' ' + elem + ' '
-      return elem
-    }
-    if (elem === '+') {
-      elem = ' ' + elem + ' '
-      return elem
-    }
-    if (elem === '-') {
-      elem = ' ' + elem + ' '
-      return elem
-    }
-    return elem
-  })
-
-  return newStr.join('')
-}
-console.log(replace(str)) //12 + 34 / 56 * 78 - 1
-*/
