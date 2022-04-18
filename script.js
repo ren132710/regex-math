@@ -1,4 +1,4 @@
-import parse from './parse.js'
+import solve from './parse.js'
 
 const equation = document.querySelector('#equation')
 const answer = document.querySelector('#answer')
@@ -7,6 +7,6 @@ const form = document.querySelector('#equation-form')
 form.addEventListener('submit', (e) => {
   e.preventDefault()
 
-  const result = parse(equation.value)
+  const result = solve(equation.value)
   answer.textContent = result
 })

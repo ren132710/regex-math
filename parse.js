@@ -6,12 +6,17 @@
  */
 
 const PARENTHESES_REGEX = /\((?<equation>[^\(\)]*)\)/
-const EXPONENT_REGEX = /(?<operand1>-?\d*\.?\d+)\s*(?<operation>\^)\s*(?<operand2>-?\d+)/
-const MULTIPLY_DIVIDE_REGEX = /(?<operand1>-?\d*\.?\d+)\s*(?<operation>[\*\/])\s*(?<operand2>-?\d*\.?\d+)/
-const ADD_SUBTRACT_REGEX = /(?<operand1>-?\d*\.?\d+)\s*(?<operation>[-\+])\s*(?<operand2>-?\d*\.?\d+)/
-const FRACTIONAL_EXPONENT_REGEX = /\^\s*\d*\.+/
+const EXPONENT_REGEX = /(?<operand1>-?\d*\.?\d+)(?<operation>\^)(?<operand2>-?\d+)/
+const MULTIPLY_DIVIDE_REGEX = /(?<operand1>-?\d*\.?\d+)(?<operation>[\*\/])(?<operand2>-?\d*\.?\d+)/
+const ADD_SUBTRACT_REGEX = /(?<operand1>-?\d*\.?\d+)(?<operation>[-\+])(?<operand2>-?\d*\.?\d+)/
+const FRACTIONAL_EXPONENT_REGEX = /\^\d*\.+/
 
-export default function parse(equation) {
+export default function solve(eq) {
+  const equation = eq.replace(/\s/g, '')
+  return parse(equation)
+}
+
+function parse(equation) {
   if (equation.match(PARENTHESES_REGEX)) {
     const subEquation = equation.match(PARENTHESES_REGEX).groups.equation
     const result = parse(subEquation)
